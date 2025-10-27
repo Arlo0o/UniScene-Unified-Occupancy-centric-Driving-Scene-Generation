@@ -70,7 +70,7 @@ Place the neural kernel model `ks.pth` in `./ks.pth`.
 ### 2. Prepare Data
 
 #### a. Download NuPlan Dataset
-Download from [Huggingface](https://huggingface.co/datasets/Arlolo0/Nuplan-Occupancy/tree/main/dataset) and place the dataset under `./data/nuplan`:
+Download from [NuPlan](https://www.nuscenes.org/nuplan) and place the dataset under `./data/nuplan`:
 
 ```
 ./data/nuplan
