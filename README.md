@@ -116,12 +116,12 @@ Visualize occupancy with `gs_render/vis_occ/vis_occ.py`.
 
 #### 📝 Note on Z-axis Ranges
 
-| Split | Resolution | Z Range |
-|-------|------------|---------|
-| Mini train | 800 | -5 ~ 3 |
-| Mini val | 800 | -3 ~ 5 |
-| Trainval train | 400 | -3 ~ 5 |
-| Trainval val | 400 | -3 ~ 5 |
+| Split | Resolution | Z Range | Config |
+|-------|------------|---------|---------|
+| Mini train | 800 | -5 ~ 3 | config_nuplan_r800 |
+| Mini val | 800 | -3 ~ 5 | config_nuplan_r800_old |
+| Trainval train | 400 | -3 ~ 5 | config_nuplan_r400 |
+| Trainval val | 400 | -3 ~ 5 | config_nuplan_r400 |
 
 > ⚠️ **Please note**: The z-axis range of **Miniset train** is **-5 to 3**.
 
@@ -154,6 +154,7 @@ Modify paths in `gs_render/run_render_nuplan_mini_val_nomap_r400_ut` and run:
 bash gs_render/run_render_nuplan_mini_val_nomap_r400_ut.sh 0 100000
 ```
 
+Note: If you want to render the full set or another split, remember to change the corresponding path and config.
 
 ---
 
