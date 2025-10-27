@@ -1,9 +1,9 @@
-# UniScenev2: Scaling Up Occupancy-centric Driving Scene Generation
+Scaling Up Occupancy-centric Driving Scene Generation: Dataset and Method (UniScenev2)
 
 
 
  <!-- [![arXiv paper](https://img.shields.io/badge/arXiv%20%2B%20supp-2412.05435-purple)](https://arxiv.org/abs/2412.05435)  -->
-[![Code page](https://img.shields.io/badge/Project%20Page-UniScene-red)](https://arlo0o.github.io/uniscenev2/)
+[![Code page](https://img.shields.io/badge/Project%20Page-UniScenev2-red)](https://arlo0o.github.io/uniscenev2/)
 [![Hugging Face](https://huggingface.co/datasets/huggingface/badges/resolve/main/dataset-on-hf-md.svg)](https://huggingface.co/datasets/Arlolo0/Nuplan-Occupancy/tree/main) 
 <!-- [![Code page](https://img.shields.io/badge/PDF%20File-UniScene-green)](./assets/UniScene-arxiv.pdf) -->
 
