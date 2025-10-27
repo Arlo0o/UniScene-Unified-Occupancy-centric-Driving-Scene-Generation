@@ -118,8 +118,8 @@ Visualize occupancy with `gs_render/vis_occ/vis_occ.py`.
 
 | Split | Resolution | Z Range | Config |
 |-------|------------|---------|---------|
-| Mini train | 800 | -5 ~ 3 | config_nuplan_r800 |
-| Mini val | 800 | -3 ~ 5 | config_nuplan_r800_old |
+| Mini train | 800 | -5 ~ 3 | config_nuplan_r800_old |
+| Mini val | 800 | -3 ~ 5 | config_nuplan_r800 |
 | Trainval train | 400 | -3 ~ 5 | config_nuplan_r400 |
 | Trainval val | 400 | -3 ~ 5 | config_nuplan_r400 |
 
