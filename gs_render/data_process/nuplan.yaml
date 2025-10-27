@@ -1,0 +1,22 @@
+labels:
+ 0: vehicle
+ 1: bicycle
+ 2: pedestrian
+ 3: traffic_cone
+ 4: barrier
+ 5: czone_sign
+ 6: generic_object
+ 7: background
+
+learning_map:
+ 0: 0
+ 1: 1
+ 2: 2
+ 3: 3
+ 4: 4
+ 5: 5
+ 6: 6
+ 7: 7
+ 8: 8
+ 9: 9
+ 10: 10
