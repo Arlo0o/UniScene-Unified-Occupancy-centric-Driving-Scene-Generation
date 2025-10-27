@@ -1,4 +1,4 @@
-Scaling Up Occupancy-centric Driving Scene Generation: Dataset and Method (UniScenev2)
+# Scaling Up Occupancy-centric Driving Scene Generation: Dataset and Method (UniScenev2)
 
 
 
@@ -41,13 +41,15 @@ Comparison between Nuplan-Occ and other occupancy/LiDAR datasets. ''Surrounded''
 
 ## 🛠️ Data Pipeline
 
+<div align=center><img width="960"   src="./assets/dataset_pipeline.png"/></div>
+
 ### 1. Environment Setup
 
 ```bash
 conda env create -f data_pipeline_env.yaml
 conda activate uniscenev2_data_pipeline
 ```
-
+ 
 Install dependencies:
 
 ```bash
