@@ -36,6 +36,8 @@ Generating high-fidelity, controllable, and annotated training data is critical 
  
 
 ### 💥 News
+- [2025/03]: Check out our new verision of [UniScenev2](https://arlo0o.github.io/uniscenev2/) and large-scale occupancy of [Nuplan-Occ](https://huggingface.co/datasets/Arlolo0/Nuplan-Occupancy/tree/main).
+- [2025/03]: Check out our latest work of [OmniNWM: Omni Driving Navigation World Models](https://arlo0o.github.io/OmniNWM/).
 - [2025/03]: Code and pre-trained weights are released.
 - [2025/02]: Paper is accepted on **CVPR 2025**.
 - [2024/12]: Paper is on the [arxiv](https://arxiv.org/abs/2412.05435).
