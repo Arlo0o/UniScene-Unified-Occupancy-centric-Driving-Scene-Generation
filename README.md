@@ -65,13 +65,12 @@ cd $WORK_DIR/gs_render/gsplat
 pip install . -v
 ```
 
-Download the neural kernel model `ks.pth` and place it in `./ks.pth`.
+Place the neural kernel model `ks.pth` in `./ks.pth`.
 
 ### 2. Prepare Data
 
 #### a. Download NuPlan Dataset
-
-Place the dataset under `./data/nuplan`:
+Download from [Huggingface](https://huggingface.co/datasets/Arlolo0/Nuplan-Occupancy/tree/main/dataset) and place the dataset under `./data/nuplan`:
 
 ```
 ./data/nuplan
@@ -82,7 +81,7 @@ Place the dataset under `./data/nuplan`:
 
 #### b. Download Pickle Files
 
-Place the provided pickle files under `./data/nuplan_pkls`:
+Download from [Huggingface](https://huggingface.co/datasets/Arlolo0/Nuplan-Occupancy/tree/main/pickle) and place  the provided pickle files under `./data/nuplan_pkls`:
 
 ```
 ./data/nuplan_pkls
