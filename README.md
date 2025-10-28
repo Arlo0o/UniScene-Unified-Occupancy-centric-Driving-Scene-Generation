@@ -2,7 +2,7 @@
 
 
 
- <!-- [![arXiv paper](https://img.shields.io/badge/arXiv%20%2B%20supp-2412.05435-purple)](https://arxiv.org/abs/2412.05435)  -->
+ [![arXiv paper](https://img.shields.io/badge/arXiv-2510.22973-purple)](https://arxiv.org/abs/2510.22973) 
 [![Code page](https://img.shields.io/badge/Project%20Page-UniScenev2-red)](https://arlo0o.github.io/uniscenev2/)
 [![Hugging Face](https://huggingface.co/datasets/huggingface/badges/resolve/main/dataset-on-hf-md.svg)](https://huggingface.co/datasets/Arlolo0/Nuplan-Occupancy/tree/main) 
 <!-- [![Code page](https://img.shields.io/badge/PDF%20File-UniScene-green)](./assets/UniScene-arxiv.pdf) -->
@@ -168,6 +168,15 @@ If you use **UniScenev2** or the **Nuplan-Occ dataset**, please cite our paper:
   author={Li, Bohan and Guo, Jiazhe and Liu, Hongsi and Zou, Yingshuang and Ding, Yikang and Chen, Xiwu and Zhu, Hu and Tan, Feiyang and Zhang, Chi and Wang, Tiancai and others},
   journal={arXiv preprint arXiv:2412.05435},
   year={2024}
+}
+@misc{li2025scalingoccupancycentricdrivingscene,
+      title={Scaling Up Occupancy-centric Driving Scene Generation: Dataset and Method}, 
+      author={Bohan Li and Xin Jin and Hu Zhu and Hongsi Liu and Ruikai Li and Jiazhe Guo and Kaiwen Cai and Chao Ma and Yueming Jin and Hao Zhao and Xiaokang Yang and Wenjun Zeng},
+      year={2025},
+      eprint={2510.22973},
+      archivePrefix={arXiv},
+      primaryClass={cs.CV},
+      url={https://arxiv.org/abs/2510.22973}, 
 }
 ```
 
