@@ -191,5 +191,15 @@ If you find our paper and code useful for your research, please consider citing 
   journal={arXiv preprint arXiv:2412.05435},
   year={2024}
 }
+
+@misc{li2025scalingoccupancycentricdrivingscene,
+      title={Scaling Up Occupancy-centric Driving Scene Generation: Dataset and Method}, 
+      author={Bohan Li and Xin Jin and Hu Zhu and Hongsi Liu and Ruikai Li and Jiazhe Guo and Kaiwen Cai and Chao Ma and Yueming Jin and Hao Zhao and Xiaokang Yang and Wenjun Zeng},
+      year={2025},
+      eprint={2510.22973},
+      archivePrefix={arXiv},
+      primaryClass={cs.CV},
+      url={https://arxiv.org/abs/2510.22973}, 
+}
 ```
 
