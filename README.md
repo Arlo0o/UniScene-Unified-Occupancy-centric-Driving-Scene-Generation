@@ -163,12 +163,14 @@ Note: If you want to render the full set or another split, remember to change th
 If you use **UniScenev2** or the **Nuplan-Occ dataset**, please cite our paper:
 
 ```bibtex
+
 @article{li2024uniscene,
   title={UniScene: Unified Occupancy-centric Driving Scene Generation},
   author={Li, Bohan and Guo, Jiazhe and Liu, Hongsi and Zou, Yingshuang and Ding, Yikang and Chen, Xiwu and Zhu, Hu and Tan, Feiyang and Zhang, Chi and Wang, Tiancai and others},
   journal={arXiv preprint arXiv:2412.05435},
   year={2024}
 }
+
 @article{li2025scaling,
   title={Scaling Up Occupancy-centric Driving Scene Generation: Dataset and Method},
   author={Li, Bohan and Jin, Xin and Zhu, Hu and Liu, Hongsi and Li, Ruikai and Guo, Jiazhe and Cai, Kaiwen and Ma, Chao and Jin, Yueming and Zhao, Hao and others},
