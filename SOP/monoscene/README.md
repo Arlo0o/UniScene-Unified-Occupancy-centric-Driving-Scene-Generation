@@ -127,7 +127,7 @@ echo "Link complete: ./data/nuplan_all/sensor_blobs/mini"
 ---
 
 ## 🔗 **Related Resources**
-- **Main Repository**: [UniScenev2 Unified Occupancy-centric Driving Scene Generation](https://github.com/Arlo0o/UniScene-Unified-Occupancy-centric-Driving-Scene-Generation/tree/v2)
+- **Main Repository**: [UniScenev2: Unified Occupancy-centric Driving Scene Generation](https://github.com/Arlo0o/UniScene-Unified-Occupancy-centric-Driving-Scene-Generation/tree/v2)
 <!-- - **Challenge Website**: [WACV 2026 Challenge on 3D Semantic Occupancy Prediction](https://arlo0o.github.io/uniscenev2/challenge) *(to be created)* -->
 - **Dataset**: [NuPlan-Occ on HuggingFace](https://huggingface.co/datasets/Arlolo0/Nuplan-Occupancy)
 
