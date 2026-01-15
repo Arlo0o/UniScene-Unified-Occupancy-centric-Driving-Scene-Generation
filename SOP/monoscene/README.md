@@ -64,7 +64,7 @@ $ pip install -e ./
 
 ### 2. Prepare NuPlan-Occ Dataset
 
-Follow the instructions in the [UniScene repository](https://github.com/Arlo0o/UniScene-Unified-Occupancy-centric-Driving-Scene-Generation/tree/v2?tab=readme-ov-file#2-prepare-data) to prepare the NuPlan-Occ dataset.
+Follow the instructions in the [UniScenev2 repository](https://github.com/Arlo0o/UniScene-Unified-Occupancy-centric-Driving-Scene-Generation/tree/v2?tab=readme-ov-file#2-prepare-data) to prepare the NuPlan-Occ dataset.
 
 Then, link the dataset to the appropriate directories:
 
