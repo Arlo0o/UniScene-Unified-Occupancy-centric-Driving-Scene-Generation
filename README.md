@@ -145,7 +145,8 @@ Refer to `add_bev_layout.py` for mapping BEV layouts to occupancy grids.
 
 ## 📋  Run and Evaluate Semantic Occupancy Prediction (SOP) Baseline  
 
-We provide a reproduced baseline using MonoScene trained on NuPlan-Occ miniset, please refer to [MonoScene Baseline for NuPlan-Occ Dataset].(https://github.com/Arlo0o/UniScene-Unified-Occupancy-centric-Driving-Scene-Generation/tree/v2/SOP/monoscene)
+We provide a reproduced baseline using MonoScene trained on NuPlan-Occ miniset, please refer to: 
+[MonoScene Baseline for NuPlan-Occ Dataset.](https://github.com/Arlo0o/UniScene-Unified-Occupancy-centric-Driving-Scene-Generation/tree/v2/SOP/monoscene)
 
 ---
 
