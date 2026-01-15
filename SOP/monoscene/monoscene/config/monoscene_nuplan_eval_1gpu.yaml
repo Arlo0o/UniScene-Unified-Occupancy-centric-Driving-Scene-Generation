@@ -1,0 +1,42 @@
+#dataset: "NYU" # "kitti", "kitti_360"
+dataset: "nuplan"
+
+n_relations: 4
+
+enable_log: true
+kitti_root: '/path/to/semantic_kitti'
+kitti_preprocess_root: '/path/to/kitti/preprocess/folder'
+kitti_logdir: 'exps/nuplan'
+resume_from: None
+
+NYU_root: '/path/to/NYU/depthbin'
+NYU_preprocess_root: '/path/to/NYU/preprocess/folder'
+logdir: '/path/to/NYU/logdir'
+
+target_width: 1920
+target_height: 1080
+
+fp_loss: true 
+frustum_size: 8 
+batch_size: 1
+n_gpus: 1
+num_workers_per_gpu: 4
+exp_prefix: "exp"
+run: 1
+lr: 1e-4
+weight_decay: 1e-4 
+
+context_prior: false
+
+relation_loss: false
+CE_ssc_loss: false
+sem_scal_loss: false
+geo_scal_loss: false
+
+project_1_2: true
+project_1_4: true
+project_1_8: true
+
+
+
+
