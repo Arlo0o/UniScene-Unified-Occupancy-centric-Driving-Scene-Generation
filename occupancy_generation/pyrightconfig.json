@@ -1,0 +1,9 @@
+{
+    "exclude": [
+      "out",
+      "outputs",
+      "data",
+      "submodules"
+    ]
+  }
+  

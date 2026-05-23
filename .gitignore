@@ -1,0 +1,34 @@
+.DS_Store
+._*
+__pycache__/
+*.py[cod]
+
+# Large local assets and generated outputs
+data/
+checkpoint/
+checkpoints/
+ckpts/
+outputs/
+output/
+runs/
+wandb/
+logs/
+
+# Model weights and generated data
+*.pth
+*.pt
+*.ckpt
+*.safetensors
+*.bin
+*.pkl
+*.npy
+*.npz
+*.h5
+*.mp4
+
+# Build artifacts
+*.so
+*.o
+build/
+dist/
+*.egg-info/

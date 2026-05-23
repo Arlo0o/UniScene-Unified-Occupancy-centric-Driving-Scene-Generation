@@ -1,0 +1,113 @@
+labels_16:
+  0: 'free'
+  1: 'barrier'
+  2: 'bicycle'
+  3: 'bus'
+  4: 'car'
+  5: 'construction_vehicle'
+  6: 'motorcycle'
+  7: 'pedestrian'
+  8: 'traffic_cone'
+  9: 'trailer'
+  10: 'truck'
+  11: 'driveable_surface'
+  12: 'other_flat'
+  13: 'sidewalk'
+  14: 'terrain'
+  15: 'manmade'
+  16: 'vegetation'
+
+color_map:
+  0: [0, 0, 0]  # Black. noise
+  1: [112, 128, 144]  # Slategrey barrier
+  2: [220, 20, 60]  # Crimson bicycle
+  3: [255, 127, 80]  # Orangered bus
+  4: [255, 158, 0]  # Orange car
+  5: [233, 150, 70]  # Darksalmon construction
+  6: [255, 61, 99]  # Red motorcycle
+  7: [0, 0, 230]  # Blue pedestrian
+  8: [47, 79, 79]  # Darkslategrey trafficcone
+  9: [255, 140, 0]  # Darkorange trailer
+  10: [255, 99, 71]  # Tomato truck
+  11: [0, 207, 191]  # nuTonomy green driveable_surface
+  12: [175, 0, 75]  # flat other
+  13: [75, 0, 75]  # sidewalk
+  14: [112, 180, 60]  # terrain
+  15: [222, 184, 135]  # Burlywood mannade
+  16: [0, 175, 0]  # Green vegetation
+
+content:
+  0: 0.0076850200386773294
+  1: 0.0034832571551525766
+  2: 0.000209261571237835
+  3: 0.0038688613463824357
+  4: 0.026287472900245967
+  5: 0.0021340930172276595
+  6: 0.0002893739861011474
+  7: 0.0035575345117137194
+  8: 0.0005368212083479962
+  9: 0.004670014583176635
+  10: 0.010076743011183447
+  11: 0.30227934125093076
+  12: 0.006830945651470468
+  13: 0.08659726059318179
+  14: 0.11649415471620386
+  15: 0.19385065478754854
+  16: 0.2311491896712178
+
+learning_map:
+  0: 0
+  1: 1
+  2: 2
+  3: 3
+  4: 4
+  5: 5
+  6: 6
+  7: 7
+  8: 8
+  9: 9
+  10: 10
+  11: 11
+  12: 12
+  13: 13
+  14: 14
+  15: 15
+  16: 16
+
+learning_map_inv:  
+  0: 0
+  1: 1
+  2: 2
+  3: 3
+  4: 4
+  5: 5
+  6: 6
+  7: 7
+  8: 8
+  9: 9
+  10: 10
+  11: 11
+  12: 12
+  13: 13
+  14: 14
+  15: 15
+  16: 16
+
+learning_ignore:
+  0: True
+  1: False
+  2: False
+  3: False
+  4: False
+  5: False
+  6: False
+  7: False
+  8: False
+  9: False
+  10: False
+  11: False
+  12: False
+  13: False
+  14: False
+  15: False
+  16: False

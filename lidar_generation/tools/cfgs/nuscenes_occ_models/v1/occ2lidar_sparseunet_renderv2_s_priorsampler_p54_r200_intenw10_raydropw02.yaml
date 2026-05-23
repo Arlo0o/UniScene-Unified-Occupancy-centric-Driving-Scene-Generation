@@ -1,0 +1,136 @@
+CLASS_NAMES: ['noise','barrier','bicycle','bus','car','construction','motorcycle','pedestrian','trafficcone','trailer','truck','driveable_surface','other','sidewalk','terrain','mannade','vegetation']
+
+DATA_CONFIG:
+    _BASE_CONFIG_: tools/cfgs/dataset_configs/occ2lidar_dataset_r200.yaml
+    POINT_CLOUD_RANGE: &point_cloud_range [-50.0, -50.0, -5.0, 50.0, 50.0, 3.0]
+    N_POINTS_IN_VOXEL: &n_points_in_voxel 10
+    COMPUTE_OCC_LIDAR_MATCH: False
+    COMPUTE_MISSING_POINTS: True
+    DATA_AUGMENTOR:
+        DISABLE_AUG_LIST: ['placeholder']
+        #['random_world_flip', 'random_world_rotation', 'random_world_scaling']
+        AUG_CONFIG_LIST:
+            - NAME: random_world_flip
+              ALONG_AXIS_LIST: ['x', 'y']
+
+            - NAME: random_world_rotation
+              WORLD_ROT_ANGLE: [-0.78539816, 0.78539816]
+
+            - NAME: random_world_scaling
+              WORLD_SCALE_RANGE: [0.95, 1.05]
+
+            - NAME: random_world_translation
+              NOISE_TRANSLATE_STD: [0.5, 0.5, 0.5]
+
+    DATA_PROCESSOR:
+        - NAME: mask_points_and_boxes_outside_range
+          REMOVE_OUTSIDE_BOXES: True
+
+        - NAME: shuffle_points
+          SHUFFLE_ENABLED: {
+            'train': True,
+            'test': False
+          }
+
+        - NAME: transform_points_to_voxels_placeholder
+          VOXEL_SIZE: &voxel_size [0.5, 0.5, 0.5]
+MODEL:
+    NAME: Occ2LiDARSparseUNet
+
+    VFE:
+        NAME: DynMeanVFE
+
+    BACKBONE_3D:
+        NAME: UNetV2Small
+        RETURN_ENCODED_TENSOR: False
+        INPUT_CHANNELS: 23
+
+    DENSE_HEAD:
+        NAME: Occ2LiDARRender
+        in_channels: 32
+        drop_collisionless_rays: True
+        drop_ray_when_pred: True
+        use_gt_drop: True
+        unified_voxel_size: *voxel_size
+        unified_voxel_shape: [200, 200, 16]
+        pc_range: *point_cloud_range
+        view_cfg: None
+        render_conv_cfg:
+          out_channels: 32
+          kernel_size: 3
+          padding: 1
+        ray_sampler_cfg:
+            close_radius: 3.0
+            far_radius: 50.0
+            only_img_mask: False
+            only_point_mask: False
+            replace_sample: False
+            point_nsample: 1024
+            point_ratio: 0.5
+            pixel_interval: 4
+            sky_region: 0.4
+            merged_nsample: 1024
+        render_ssl_cfg:
+          #type: NeuSModelV2 
+          type: NeuSModelV2LiDAROnly
+          pred_intensity: True
+          pred_raydrop: True
+          norm_scene: True
+          field_cfg:
+            type: SDFField
+            sdf_decoder_cfg:
+                in_dim: 32
+                out_dim: 17 # 16 + 1
+                hidden_size: 16
+                n_blocks: 3
+            # rgb_decoder_cfg: 
+            #     in_dim: 54 # 32 + 16 + 3 + 3, 
+            #     out_dim: 48 # 32 + 16, 
+            #     hidden_size: 16
+            #     n_blocks: 3
+            interpolate_cfg: 
+              type: SmoothSampler
+              padding_mode: zeros
+            beta_init: 0.3
+          collider_cfg:
+            type: AABBBoxCollider
+            near_plane: 1.0
+          sampler_cfg:
+            type: NeuSSampler
+            initial_sampler: PriorSampler
+            num_samples: 144
+            num_samples_importance: 36 #96
+            num_samples_importance_prior: 36
+            num_upsample_steps: 1
+            train_stratified: True
+            single_jitter: True
+          loss_cfg:
+            sensor_depth_truncation: 0.1
+            sparse_points_sdf_supervised: False
+            weights:
+              depth_loss: 10.0
+              rgb_loss: 0.0
+              raydrop_loss: 0.2
+              intensity_loss: 10.0
+            
+
+OPTIMIZATION:
+    BATCH_SIZE_PER_GPU: 6
+    NUM_EPOCHS: 20
+
+    OPTIMIZER: adam_onecycle
+    LR: 0.003
+    WEIGHT_DECAY: 0.01
+    MOMENTUM: 0.9
+
+    MOMS: [0.95, 0.85]
+    PCT_START: 0.4
+    DIV_FACTOR: 10
+    DECAY_STEP_LIST: [35, 45]
+    LR_DECAY: 0.1
+    LR_CLIP: 0.0000001
+
+    LR_WARMUP: False
+    WARMUP_EPOCH: 1
+
+    GRAD_NORM_CLIP: 10

@@ -1,0 +1,48 @@
+DATASET: 'NuPlanOccDataset'
+
+DATA_SPLIT: {
+    'train': train,
+    'test': val
+}
+DATA_PATH: "data/nuplan_all"
+lidar_path: "data/nuplan_all/sensor_blobs/mini"
+pkl_path: "data/nuplan_pkls/mini/nuplan_mini_10hz_train.pkl"
+# val_pkl_path: "data/nuplan_pkls/mini/nuplan_mini_10hz_train.pkl"
+val_pkl_path: "data/nuplan_pkls/mini/nuplan_mini_10hz_val.pkl"
+occ_path: "data/occ_quan/nuplan_quantized_400_400_32"
+POINT_CLOUD_RANGE: [-50.0, -50.0, -5.0, 50.0, 50.0, 3.0]
+GRID_SIZE: [400, 400, 32]
+VOXEL_SIZE: [0.25, 0.25, 0.25]
+top_lidar_only: False
+
+POINT_FEATURE_ENCODING: {
+    encoding_type: absolute_coordinates_encoding,
+    used_feature_list: ['x', 'y', 'z', 'intensity', 'ring', 'lidar_idx'],
+    src_feature_list: ['x', 'y', 'z', 'intensity', 'ring', 'lidar_idx'],
+}
+
+DATA_AUGMENTOR:
+    DISABLE_AUG_LIST: ['random_world_flip', 'random_world_rotation', 'random_world_scaling']
+    AUG_CONFIG_LIST:
+        - NAME: random_world_flip
+          ALONG_AXIS_LIST: ['x', 'y']
+
+        - NAME: random_world_rotation
+          WORLD_ROT_ANGLE: [-0.78539816, 0.78539816]
+
+        - NAME: random_world_scaling
+          WORLD_SCALE_RANGE: [0.95, 1.05]
+
+# 防止下游config写错，这里不提供默认
+# DATA_PROCESSOR:
+#     - NAME: mask_points_and_boxes_outside_range
+#       REMOVE_OUTSIDE_BOXES: True
+
+#     - NAME: shuffle_points
+#       SHUFFLE_ENABLED: {
+#         'train': True,
+#         'test': False
+#       }
+
+#     - NAME: transform_points_to_voxels_placeholder
+#       VOXEL_SIZE: [0.2, 0.2, 0.2]

@@ -1,0 +1,44 @@
+DATASET: 'Occ2LiDARDatasetVis'
+
+DATA_SPLIT: {
+    'train': train,
+    'test': val
+}
+
+DATA_PATH: "/data/longhun/3D/nuscenes/data"
+split_root: "data/openocc"
+lidar_root: "/data/longhun/3D/nuscenes/data/nuscenes/samples/LIDAR_TOP/"
+occ_root: "/data/longhun/3D/nuscenes/data/nuScenes-Occupancy/"
+occ_anno_file: "/code/occ_lidargen/annos/nuScenes_lidar2occ_openocc.json"
+POINT_CLOUD_RANGE: [-51.2, -51.2, -5.0, 51.2, 51.2, 3.0]
+
+POINT_FEATURE_ENCODING: {
+    encoding_type: absolute_coordinates_encoding,
+    used_feature_list: ['x', 'y', 'z', 'intensity', 'time'],
+    src_feature_list: ['x', 'y', 'z', 'intensity', 'time'],
+}
+
+DATA_AUGMENTOR:
+    DISABLE_AUG_LIST: ['random_world_flip', 'random_world_rotation', 'random_world_scaling']
+    AUG_CONFIG_LIST:
+        - NAME: random_world_flip
+          ALONG_AXIS_LIST: ['x', 'y']
+
+        - NAME: random_world_rotation
+          WORLD_ROT_ANGLE: [-0.78539816, 0.78539816]
+
+        - NAME: random_world_scaling
+          WORLD_SCALE_RANGE: [0.95, 1.05]
+
+DATA_PROCESSOR:
+    - NAME: mask_points_and_boxes_outside_range
+      REMOVE_OUTSIDE_BOXES: True
+
+    - NAME: shuffle_points
+      SHUFFLE_ENABLED: {
+        'train': True,
+        'test': False
+      }
+
+    - NAME: transform_points_to_voxels_placeholder
+      VOXEL_SIZE: [0.2, 0.2, 0.2]
