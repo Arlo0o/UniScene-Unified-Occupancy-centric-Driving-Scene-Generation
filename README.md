@@ -10,8 +10,28 @@
 <!-- [![Code page](https://img.shields.io/badge/PDF%20File-UniScene-green)](./assets/UniScene-arxiv.pdf) -->
 
 
+## 📖 Table of Contents
+
+- [Introduction](#introduction)
+- [Released Resources](#released-resources)
+  - [Checkpoints](#checkpoints)
+- [Method Overview](#method-overview)
+  - [Occupancy Generation Branch](#method-occupancy-generation)
+  - [Video Generation Branch](#method-video-generation)
+  - [LiDAR Generation Branch](#method-lidar-generation)
+- [Nuplan-Occ Dataset](#nuplan-occ-dataset)
+- [Data Pipeline](#data-pipeline)
+- [SOP Baseline](#sop-baseline)
+- [Rendering](#rendering)
+- [Video Generation](#video-generation-module)
+- [Occupancy Generation](#occupancy-generation-module)
+- [LiDAR Generation](#lidar-generation-module)
+- [Citation](#citation)
+
 
 ---
+<a id="introduction"></a>
+
 ## 📌 Introduction
 
 **UniScenev2** is a unified occupancy-centric framework for large-scale 4D dynamic scene generation in autonomous driving.
@@ -31,6 +51,8 @@ Overview of Nuplan-Occ dataset and the UniScenev2 pipeline. We introduce the lar
 </div>
 
 ---
+
+<a id="released-resources"></a>
 
 ## 🚀 Released Resources
 
@@ -64,9 +86,13 @@ Each generation module includes its own README with the expected local checkpoin
 
 ---
 
+<a id="method-overview"></a>
+
 ## 📚 Method Overview
 
 UniScenev2 follows an occupancy-centric generation pipeline. It first models dynamic 4D semantic occupancy as the shared scene representation, then transfers this representation to sensor-specific outputs, including surround-view video and LiDAR point clouds.
+
+<a id="method-occupancy-generation"></a>
 
 ### Occupancy Generation
 
@@ -74,11 +100,15 @@ UniScenev2 follows an occupancy-centric generation pipeline. It first models dyn
 
 The occupancy generation branch expands and forecasts semantic occupancy in a structured 4D voxel space. This branch provides the intermediate scene representation used by downstream video and LiDAR generation. Code and instructions are available in [`occupancy_generation`](./occupancy_generation).
 
+<a id="method-video-generation"></a>
+
 ### Video Generation
 
 <div align=center><img width="900" src="./assets/model_video.png"/></div>
 
 The video generation branch uses occupancy-derived sparse point maps, semantic maps, depth maps, camera parameters, and text conditions to generate temporally coherent multi-view driving videos. The released video code is available in [`video_generation`](./video_generation).
+
+<a id="method-lidar-generation"></a>
 
 ### LiDAR Generation
 
@@ -87,6 +117,8 @@ The video generation branch uses occupancy-derived sparse point maps, semantic m
 The LiDAR generation branch transfers semantic occupancy into sensor-specific LiDAR point clouds with geometry-aware and ray-based modeling, enabling generated scenes to be consumed by LiDAR-based perception pipelines. Code and instructions are available in [`lidar_generation`](./lidar_generation).
 
 ---
+
+<a id="nuplan-occ-dataset"></a>
 
 ## 🗃️ Nuplan-Occ Dataset
 
@@ -105,6 +137,8 @@ Comparison between Nuplan-Occ and other occupancy/LiDAR datasets. ''Surrounded''
 
 
 ---
+
+<a id="data-pipeline"></a>
 
 ## 🛠️ Data Pipeline
 
@@ -210,12 +244,16 @@ python3 occ_process_parallels.py \
 Refer to `add_bev_layout.py` for mapping BEV layouts to occupancy grids.
 
 
+<a id="sop-baseline"></a>
+
 ## 📋  Run and Evaluate Semantic Occupancy Prediction (SOP) Baseline  
 
 We provide a reproduced baseline using MonoScene trained on NuPlan-Occ miniset, please refer to: 
 [MonoScene Baseline for NuPlan-Occ Dataset.](https://github.com/Arlo0o/UniScene-Unified-Occupancy-centric-Driving-Scene-Generation/tree/v2/SOP/monoscene)
 
 ---
+
+<a id="rendering"></a>
 
 ## 🎨 Rendering
 
@@ -230,6 +268,8 @@ bash gs_render/run_render_nuplan_mini_val_nomap_r400_ut.sh 0 100000
 Note: If you want to render the full set or another split, remember to change the corresponding path and config.
 
 ---
+
+<a id="video-generation-module"></a>
 
 ## 🎬 Video Generation
 
@@ -246,6 +286,8 @@ bash run.sh
 For rendering semantic/depth condition maps and more training/inference details, see [`video_generation/README.md`](./video_generation/README.md).
 
 ---
+
+<a id="occupancy-generation-module"></a>
 
 ## 🧊 Occupancy Generation
 
@@ -266,6 +308,8 @@ bash run.sh
 The expected checkpoint layout is `occupancy_generation/checkpoint/occ_generation/{3dvae.pth,dit.pt}`. Prepare NuPlan pickle files, quantized occupancy grids, and BEV layout conditions following [`occupancy_generation/README.md`](./occupancy_generation/README.md).
 
 ---
+
+<a id="lidar-generation-module"></a>
 
 ## 📡 LiDAR Generation
 
@@ -290,6 +334,8 @@ bash run.sh
 The expected checkpoint layout is `lidar_generation/checkpoint/lidar_generation/checkpoint.pth`. Prepare NuPlan sensor blobs, pickle files, and quantized occupancy grids following [`lidar_generation/README.md`](./lidar_generation/README.md).
 
 ---
+
+<a id="citation"></a>
 
 ## 📜 Citation
 
