@@ -1,4 +1,4 @@
-debug=False  
+debug = False
 
 _dim_ = 16
 base_channel = 4
@@ -86,10 +86,10 @@ print_freq = 1
 return_len_ = 5
 shapes = [[200, 200], [100, 100], [50, 50], [25, 25]]
 train_dataset_config = dict(
-    data_path='/data/longhun/3D/nuplan',
-    imageset='/data/longhun/3D/nuplan/Nuplan-Occupancy/pickle/mini/nuplan_mini_10hz_train.pkl',
-    occ_dataroot='/data/longhun/3D/nuplan/Nuplan-Occupancy/dataset/nuplan_occ_miniset/quan_occ/nuplan_quantized_200_200_16',
-    bev_dataroot="/data/zhuhu/3DVision_datasets/Occ/nuplan/bev/sample_200",
+    data_path='data/nuplan',
+    imageset='data/nuplan_mini_train_clip_infos_dit.pkl',
+    occ_dataroot='data/occ_quan/nuplan_quantized_200_200_16',
+    bev_dataroot='data/nuplan_bev_200/mini',
     offset=0,
     return_len=return_len_,
     type='nuScenesSceneDatasetLidar_Nuplan_pro_new_occ_bev',
@@ -104,10 +104,10 @@ work_dir = './out/VAE_nuplan_200'
 # VAE Z shape: torch.Size([4, 8, 5, 50, 50]) and x shape: torch.Size([4, 5, 200, 200, 16])
 
 val_dataset_config = dict(
-    data_path='/data/longhun/3D/nuplan',
-    imageset='/data/longhun/3D/nuplan/Nuplan-Occupancy/pickle/mini/nuplan_mini_10hz_val.pkl',
-    occ_dataroot='/data/longhun/3D/nuplan/Nuplan-Occupancy/dataset/nuplan_occ_miniset/quan_occ/nuplan_quantized_200_200_16',
-    bev_dataroot="/data/zhuhu/3DVision_datasets/Occ/nuplan/bev/sample_200",
+    data_path='data/nuplan',
+    imageset='data/nuplan_mini_val_clip_infos_dit.pkl',
+    occ_dataroot='data/occ_quan/nuplan_quantized_200_200_16',
+    bev_dataroot='data/nuplan_bev_200/mini',
     offset=0,
     return_len=return_len_,
     type='nuScenesSceneDatasetLidar_Nuplan_pro_new_occ_bev',

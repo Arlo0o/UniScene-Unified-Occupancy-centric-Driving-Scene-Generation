@@ -1,4 +1,4 @@
-debug=True
+debug = False
 
 grad_max_norm = 35
 print_freq = 10
@@ -24,7 +24,7 @@ optimizer = dict(
     ),
 )
 
-data_path='/mnt/datasets/nuplan-all/2-0-0/dataset/nuplan-v1.1'
+data_path = 'data/nuplan'
 
 
 train_dataset_config = dict(
@@ -32,8 +32,8 @@ train_dataset_config = dict(
     data_path = data_path,
     return_len = return_len_, 
     offset = 0,
-    occ_dataroot='/mnt/datasets/nuplan-occ/1-1-01/occ_quan/nuplan_quantized_200_200_16',
-    imageset = '/mnt/datasets/nuplan-pkl/25-03-08-1/nuplan_pkls/nuplan_10hz_pkl/mini/nuplan_mini_10hz_train.pkl', 
+    occ_dataroot='data/occ_quan/nuplan_quantized_200_200_16',
+    imageset='data/nuplan_mini_train_clip_infos_dit.pkl',
     debug=debug
 )
     
@@ -42,8 +42,8 @@ val_dataset_config = dict(
     data_path = data_path,
     return_len = return_len_, 
     offset = 0,
-    occ_dataroot='/mnt/datasets/nuplan-occ/1-1-01/occ_quan/nuplan_quantized_200_200_16',
-    imageset = '/mnt/datasets/nuplan-pkl/25-03-08-1/nuplan_pkls/nuplan_10hz_pkl/mini/nuplan_mini_10hz_val.pkl', 
+    occ_dataroot='data/occ_quan/nuplan_quantized_200_200_16',
+    imageset='data/nuplan_mini_val_clip_infos_dit.pkl',
     debug=debug
 )
 

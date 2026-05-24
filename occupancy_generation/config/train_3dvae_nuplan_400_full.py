@@ -1,4 +1,4 @@
-debug=False
+debug = False
 
 
 grad_max_norm = 1
@@ -93,40 +93,11 @@ print_freq = 10
 return_len_ = 5
 shapes = [[200, 200], [100, 100], [50, 50], [25, 25]]
 
-# lixiang
-
-# train_dataset_config = dict(
-#     data_path='/mnt/datasets/nuplan-all/2-0-0/dataset/nuplan-v1.1',
-#     imageset='/mnt/datasets/nuplan-pkl/25-03-08-1/nuplan_pkls/nuplan_10hz_pkl/mini/nuplan_mini_10hz_train.pkl',
-#     occ_dataroot='/mnt/datasets/nuplan-occ/1-1-01/occ_quan/nuplan_quantized_400_400_32',
-#     offset=0,
-#     return_len=return_len_,
-#     quantize_size=(400,400,32),
-#     type='nuScenesSceneDatasetLidar_Nuplan',
-#     debug=debug)
-# train_loader = dict(batch_size=1, num_workers=4, shuffle=True)
-# train_wrapper_config = dict(phase='train', type='tpvformer_dataset_nuscenes')
-
-# unique_label = [0,1,2,3,4,5,6,7]
-
-# val_dataset_config = dict(
-#     data_path='/mnt/datasets/nuplan-all/2-0-0/dataset/nuplan-v1.1',
-#     imageset='/mnt/datasets/nuplan-pkl/25-03-08-1/nuplan_pkls/nuplan_10hz_pkl/mini/nuplan_mini_10hz_val.pkl',
-#     occ_dataroot='/mnt/datasets/nuplan-occ/1-1-01/occ_quan/nuplan_quantized_400_400_32',
-#     offset=0,
-#     return_len=return_len_,
-#     quantize_size=(400,400,32),
-#     type='nuScenesSceneDatasetLidar_Nuplan',
-#     debug=debug)
-# val_loader = dict(batch_size=1, num_workers=4, shuffle=False)
-# val_wrapper_config = dict(phase='val', type='tpvformer_dataset_nuscenes')
-
-# eit
 train_dataset_config = dict(
-    data_path='/mnt/datasets/nuplan-all/2-0-0/dataset/nuplan-v1.1',
-    imageset='data/nuplan_trainval_train_clip_infos_5.pkl',
-    occ_dataroot='/data/longhun/3D/nuplan/Nuplan-Occupancy/dataset/nuplan_occ_val/GT_occ_fast3_10hztrain_r400/dense_voxels_with_semantic',
-    bev_dataroot='/data/zhuhu/3DVision_datasets/Occ/nuplan/bev/sample_400',
+    data_path='data/nuplan',
+    imageset='data/nuplan_trainval_train_clip_infos_dit.pkl',
+    occ_dataroot='data/occ_quan/nuplan_quantized_400_400_32',
+    bev_dataroot='data/nuplan_bev_400/trainval',
     offset=0,
     return_len=return_len_,
     quantize_size=(400,400,32),
@@ -138,10 +109,10 @@ train_wrapper_config = dict(phase='train', type='tpvformer_dataset_nuplan_hr_min
 unique_label = [0,1,2,3,4,5,6,7]
 
 val_dataset_config = dict(
-    data_path='/mnt/datasets/nuplan-all/2-0-0/dataset/nuplan-v1.1',
+    data_path='data/nuplan',
     imageset='data/nuplan_trainval_val_clip_infos_dit.pkl',
-    occ_dataroot='/data/longhun/3D/nuplan/Nuplan-Occupancy/dataset/nuplan_occ_val/GT_occ_fast3_10hzval_r400/dense_voxels_with_semantic',
-    bev_dataroot='/data/zhuhu/3DVision_datasets/Occ/nuplan/bev/sample_400',
+    occ_dataroot='data/occ_quan/nuplan_quantized_400_400_32',
+    bev_dataroot='data/nuplan_bev_400/trainval',
     offset=0,
     return_len=return_len_,
     quantize_size=(400,400,32),
@@ -151,4 +122,3 @@ val_loader = dict(batch_size=1, num_workers=4, shuffle=False)
 val_wrapper_config = dict(phase='val', type='tpvformer_dataset_nuplan_hr_mini_woBev')
 
 work_dir = './out/VAE_nuplan_mini'
-

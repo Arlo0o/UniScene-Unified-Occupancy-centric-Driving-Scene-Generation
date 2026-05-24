@@ -1,5 +1,4 @@
 import sys
-sys.path.append('/lpai/volumes/lmm-data-proc/liuhongsi/code/UniScene-V2/gs_render/diff-gaussian-rasterization')
 import copy
 import os
 import shutil
@@ -16,6 +15,11 @@ import matplotlib.cm as cm
 import matplotlib.colors as mcolors
 import yaml
 from pyquaternion import Quaternion
+
+CURRENT_DIR = os.path.dirname(os.path.abspath(__file__))
+REPO_ROOT = os.path.abspath(os.path.join(CURRENT_DIR, "..", ".."))
+sys.path.append(os.path.join(REPO_ROOT, "gs_render"))
+
 from gaussian_renderer import render
 from gaussian_renderer import apply_depth_colormap, apply_semantic_colormap
 from load_nuplan_map import load_occ_layout_nuplan
@@ -170,13 +174,6 @@ class OccDataset(Dataset):
         item_data = self.infos[self.token_to_id[sample_token]]
 
         data_root = self.data_root
-        # cam_path = 'openscene_v1.1/sensor_blobs/mini'
-        # occ_base_path = "/data/longhun/3D/nuscenes/data/nksr_occ"
-        # #layout_base_path = "s3://guojiazhe/nuscenes/12hz_bevlayout_800_800/"
-        # layout_base_path = "data/occ_gen/data/my_new_step2_12hz_800/train/bevmap_4"
-        # is_vis = False
-
-
         occ_path = os.path.join(data_root, sample_token, sample_token+'.npz')
         #occ_label = load_occ_gt(occ_path=occ_path, grid_size=np.array([800, 800, 64]))
         
@@ -456,9 +453,9 @@ if __name__ == '__main__':
     parser.add_argument('--dataset_path', type=str, default="data/nuplan-all/sensor_blobs/trainval")
     parser.add_argument('--pkl_path', type=str, default='data/nuplan_pkls/trainval/nuplan_trainval_10hz_val.pkl')
     parser.add_argument('--version', type=str, default='trainval')
-    parser.add_argument('--occ_path', type=str, default="/lpai/dataset/nuplan-occ/1-1-01/GT_occ_fast3_10hzval_r400/dense_voxels_with_semantic")
+    parser.add_argument('--occ_path', type=str, default="data/dense_voxels_with_semantic")
     parser.add_argument('--processed_path', type=str, default=None)
-    parser.add_argument('--layout_path', type=str, default="/lpai/volumes/ad-lmm-data-proc-bd-ga/liuhongsi/code/occgen_dev/data/nuplan_bev/mini/train")
+    parser.add_argument('--layout_path', type=str, default="data/nuplan_bev_400/mini")
     parser.add_argument('--render_path', type=str, default="data/nuplan-occ-render-trainval_val/")
     parser.add_argument('--vis', action='store_true')
     parser.add_argument('--vis_interval', type=int, default=200)

@@ -174,13 +174,6 @@ class OccDataset(Dataset):
         item_data = self.infos[self.token_to_id[sample_token]]
 
         data_root = self.data_root
-        # cam_path = 'openscene_v1.1/sensor_blobs/mini'
-        # occ_base_path = "/data/longhun/3D/nuscenes/data/nksr_occ"
-        # #layout_base_path = "s3://guojiazhe/nuscenes/12hz_bevlayout_800_800/"
-        # layout_base_path = "data/occ_gen/data/my_new_step2_12hz_800/train/bevmap_4"
-        # is_vis = False
-
-
         occ_path = os.path.join(data_root, sample_token, sample_token+'.npz')
         #occ_label = load_occ_gt(occ_path=occ_path, grid_size=np.array([800, 800, 64]))
         

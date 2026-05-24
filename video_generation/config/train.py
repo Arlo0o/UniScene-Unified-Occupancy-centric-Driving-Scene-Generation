@@ -110,7 +110,7 @@ pipeline = [
         img_path = "./dataset1/nuplan/sensor_blobs_train/",
         seg_path ="dataset1/nuplan-occ-400-no-distor/mini", 
         depth_path = "dataset1/nuplan-occ-400-no-distor/mini", 
-        occ_path =  None # "/lpai/dataset/nuplan-occ/1-1-01/occ_quan/nuplan_quantized_200_200_16/",
+        occ_path = None,
         ),
     dict(
         type="LoadAnnotations3D",

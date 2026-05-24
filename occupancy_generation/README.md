@@ -22,6 +22,7 @@ occupancy_generation/
 ├── utils/           # metrics, loading, visualization helpers
 ├── visualize/       # basic occupancy visualization helper
 ├── run.sh           # default high-resolution occupancy inference entry
+├── train.sh         # default high-resolution occupancy training entry
 └── requirements.txt
 ```
 
@@ -75,13 +76,19 @@ occupancy_generation/
 If you already prepared the UniScenev2 dataset at the repository root, symlink the required files into this folder.
 
 ```bash
-mkdir -p occupancy_generation/data/occ_quan
+mkdir -p occupancy_generation/data/occ_quan occupancy_generation/data/nuplan_bev_400 occupancy_generation/data/nuplan_bev_200
+ln -s ../../data/nuplan_pkls/mini/nuplan_mini_10hz_train.pkl \
+  occupancy_generation/data/nuplan_mini_train_clip_infos_dit.pkl
 ln -s ../../data/nuplan_pkls/mini/nuplan_mini_10hz_val.pkl \
   occupancy_generation/data/nuplan_mini_val_clip_infos_dit.pkl
 ln -s /path/to/nuplan_quantized_400_400_32 \
   occupancy_generation/data/occ_quan/nuplan_quantized_400_400_32
+ln -s /path/to/nuplan_quantized_200_200_16 \
+  occupancy_generation/data/occ_quan/nuplan_quantized_200_200_16
 ln -s /path/to/nuplan_bev_400/mini \
   occupancy_generation/data/nuplan_bev_400/mini
+ln -s /path/to/nuplan_bev_200/mini \
+  occupancy_generation/data/nuplan_bev_200/mini
 ```
 
 The helper scripts under `data_preprocess/` include occupancy quantization and BEV-to-occupancy mapping utilities. For example:
@@ -139,15 +146,7 @@ Train the high-resolution occupancy DiT branch with the released VAE checkpoint:
 
 ```bash
 cd occupancy_generation
-torchrun --nproc_per_node 8 --master_port 26342 \
-  tools/train_OccDiT_nuplan_400_mini.py \
-  --vae_config config/train_3dvae_nuplan_400_mini.py \
-  --vae_ckpt checkpoint/occ_generation/3dvae.pth \
-  --results-dir outputs/train_occdit_400_mini \
-  --imageset data/nuplan_mini_train_clip_infos_dit.pkl \
-  --occ-root data/occ_quan/nuplan_quantized_400_400_32 \
-  --bev-root data/nuplan_bev_400/mini \
-  --dit-batch-size 40
+bash train.sh
 ```
 
 ## Spatial Expansion
