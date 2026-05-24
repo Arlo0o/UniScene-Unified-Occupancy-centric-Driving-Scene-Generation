@@ -1,6 +1,6 @@
 # UniScenev2 Video Generation
 
-This folder contains the video generation code for UniScenev2. The original `pwm` package has been renamed to `uniscenev2`; scripts and registry locations have been updated accordingly.
+This folder contains the video generation code for UniScenev2. The release uses a compact `uniscenev2_video` package with the default NuPlan train and inference configs.
 
 ## Framework
 
@@ -12,10 +12,10 @@ The video branch generates surround-view driving videos from occupancy-aware con
 
 ```text
 video_generation/
-├── config/                 # NuPlan video generation configs
+├── config/                 # minimal NuPlan train / inference configs
 ├── render_release/         # occupancy-to-condition rendering scripts
 ├── tools/                  # train / inference / VAE utilities
-├── uniscenev2/             # video generation model, dataset, scheduler, utils
+├── uniscenev2_video/       # video generation model, dataset, scheduler, utils
 ├── run.sh                  # default inference entry
 └── dis_train_nuplan_mul.sh # helper for multi-shard NuPlan training symlinks
 ```
@@ -142,7 +142,7 @@ Equivalent explicit command:
 
 ```bash
 torchrun --master_port 29507 --nproc_per_node 1 \
-  tools/inference.py config/stage_3_video_pretrain_dit3d_nuplan_control_all_10hz_single_sample.py \
+  tools/inference.py config/inference.py \
   --sample-every 1 \
   --load checkpoint/video_generation \
   --output outputs/video_generation
@@ -150,19 +150,17 @@ torchrun --master_port 29507 --nproc_per_node 1 \
 
 ## Training
 
-Stage configs are kept under `config/`. The main NuPlan control configs are:
+The release keeps the two basic NuPlan control configs under `config/`:
 
-- `config/stage_2_video_pretrain_dit3d_nuplan_control_all_10hz.py`
-- `config/stage_2_video_pretrain_dit3d_nuplan_control_all_10hz_single.py`
-- `config/stage_3_video_pretrain_dit3d_nuplan_control_all_10hz_single.py`
-- `config/stage_3_video_pretrain_dit3d_nuplan_control_all_10hz_single_sample.py`
+- `config/train.py`
+- `config/inference.py`
 
 Launch with:
 
 ```bash
 cd video_generation
 torchrun --master_port 29512 --nproc_per_node 8 \
-  tools/train.py config/stage_3_video_pretrain_dit3d_nuplan_control_all_10hz_single.py
+  tools/train.py config/train.py
 ```
 
 Adjust `img_path`, `seg_path`, `depth_path`, pickle paths, and `load` in the selected config if your data layout differs.

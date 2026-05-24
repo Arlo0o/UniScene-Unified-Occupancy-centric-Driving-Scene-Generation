@@ -26,17 +26,17 @@ parent_dir = os.path.dirname(current_dir)
 root_dir = os.path.dirname(parent_dir)
 sys.path.append(parent_dir)
 sys.path.append(root_dir)
-from uniscenev2.acceleration.checkpoint import set_grad_checkpoint
-from uniscenev2.acceleration.parallel_states import get_data_parallel_group, get_sequence_parallel_group
-from uniscenev2.datasets.dataloader import prepare_dataloader
+from uniscenev2_video.acceleration.checkpoint import set_grad_checkpoint
+from uniscenev2_video.acceleration.parallel_states import get_data_parallel_group, get_sequence_parallel_group
+from uniscenev2_video.datasets.dataloader import prepare_dataloader
 # from torchvision.io import write_video
 import logging
 from mmcv.parallel import DataContainer
-from uniscenev2.registry import DATASETS, MODELS, SCHEDULERS, build_module
-from uniscenev2.utils.ckpt_utils import load, model_gathering, model_sharding, record_model_param_shape, save, prepare_ckpt, RandomStateManager
-from uniscenev2.utils.config_utils import define_experiment_workspace, parse_configs, save_training_config
-from uniscenev2.utils.lr_scheduler import LinearWarmupLR, MultiStepWithLinearWarmupLR
-from uniscenev2.utils.misc import (
+from uniscenev2_video.registry import DATASETS, MODELS, SCHEDULERS, build_module
+from uniscenev2_video.utils.ckpt_utils import load, model_gathering, model_sharding, record_model_param_shape, save, prepare_ckpt, RandomStateManager
+from uniscenev2_video.utils.config_utils import define_experiment_workspace, parse_configs, save_training_config
+from uniscenev2_video.utils.lr_scheduler import LinearWarmupLR, MultiStepWithLinearWarmupLR
+from uniscenev2_video.utils.misc import (
     Timer,
     all_reduce_mean,
     create_logger,
@@ -50,12 +50,12 @@ from uniscenev2.utils.misc import (
 )
 import colossalai
 import math
-from uniscenev2.utils.train_utils import MaskGenerator, create_colossalai_plugin, update_ema, default, sp_vae, run_validation, save_validation_vae
+from uniscenev2_video.utils.train_utils import MaskGenerator, create_colossalai_plugin, update_ema, default, sp_vae, run_validation, save_validation_vae
 import imageio
 
 
-from  uniscenev2.models.vae.losses import *
-from  uniscenev2.utils.metrics import *
+from  uniscenev2_video.models.vae.losses import *
+from  uniscenev2_video.utils.metrics import *
 
 
 def write_video(save_path,img_list,fps=10):

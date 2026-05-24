@@ -7,11 +7,11 @@ import torch
 import torch.nn.functional as F
 import tqdm
 
-from pcdet.models import load_data_to_gpu
-from pcdet.utils import common_utils
-from pcdet.datasets.nuscenes_occ.eval_utils.jsd import JensenShannonDivergence
-from pcdet.datasets.nuscenes_occ.eval_utils.mmd_gpu import MaximumMeanDiscrepancy
-from pcdet.datasets.nuscenes_occ.eval_utils.voxelize import _voxelize_gpu
+from uniscenev2_lidar.models import load_data_to_gpu
+from uniscenev2_lidar.utils import common_utils
+from uniscenev2_lidar.datasets.nuscenes_occ.eval_utils.jsd import JensenShannonDivergence
+from uniscenev2_lidar.datasets.nuscenes_occ.eval_utils.mmd_gpu import MaximumMeanDiscrepancy
+from uniscenev2_lidar.datasets.nuscenes_occ.eval_utils.voxelize import _voxelize_gpu
 
 def batch_index_to_list(item, batch_size):
     ret = []
@@ -164,7 +164,7 @@ def eval_one_epoch(cfg, args, model, dataloader, epoch_id, logger, dist_test=Fal
 
     # 废弃：先保存再eval，现在直接合并到上面了，一遍出结果一边eval
     # logger.info('**************** Start computing JSD & MMD...*****************')
-    # result = subprocess.run(['python', 'pcdet/datasets/nuscenes_occ/eval_utils/eval_mmd_jsd_gpu_batch.py', str(os.path.join(final_output_dir, 'gt')), str(os.path.join(final_output_dir, 'pred'))], capture_output=True, text=True)
+    # result = subprocess.run(['python', 'uniscenev2_lidar/datasets/nuscenes_occ/eval_utils/eval_mmd_jsd_gpu_batch.py', str(os.path.join(final_output_dir, 'gt')), str(os.path.join(final_output_dir, 'pred'))], capture_output=True, text=True)
     # logger.info(result.stdout)
 
 

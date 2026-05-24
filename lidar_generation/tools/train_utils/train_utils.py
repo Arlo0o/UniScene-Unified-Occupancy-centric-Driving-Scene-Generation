@@ -5,7 +5,7 @@ import tqdm
 import time
 import glob
 from torch.nn.utils import clip_grad_norm_
-from pcdet.utils import common_utils, commu_utils
+from uniscenev2_lidar.utils import common_utils, commu_utils
 
 
 def train_one_epoch(model, optimizer, train_loader, model_func, lr_scheduler, accumulated_iter, optim_cfg,
@@ -232,8 +232,8 @@ def checkpoint_state(model=None, optimizer=None, epoch=None, it=None):
         model_state = None
 
     try:
-        import pcdet
-        version = 'pcdet+' + pcdet.__version__
+        import uniscenev2_lidar
+        version = 'uniscenev2_lidar+' + uniscenev2_lidar.__version__
     except:
         version = 'none'
 

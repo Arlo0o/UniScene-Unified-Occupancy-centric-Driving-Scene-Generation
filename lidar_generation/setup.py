@@ -29,12 +29,12 @@ def write_version_to_file(version, target_file):
 
 if __name__ == '__main__':
     version = '0.6.0+%s' % get_git_commit_number()
-    write_version_to_file(version, 'pcdet/version.py')
+    write_version_to_file(version, 'uniscenev2_lidar/version.py')
 
     setup(
-        name='pcdet',
+        name='uniscenev2_lidar',
         version=version,
-        description='OpenPCDet is a general codebase for 3D object detection from point cloud',
+        description='UniScenev2 LiDAR generation package',
         install_requires=[
             'numpy',
             'llvmlite',
@@ -48,8 +48,7 @@ if __name__ == '__main__':
             # 'spconv',  # spconv has different names depending on the cuda version
         ],
 
-        author='Shaoshuai Shi',
-        author_email='shaoshuaics@gmail.com',
+        author='UniScenev2 Team',
         license='Apache License 2.0',
         packages=find_packages(exclude=['tools', 'data', 'output']),
         cmdclass={
@@ -58,7 +57,7 @@ if __name__ == '__main__':
         ext_modules=[
             make_cuda_ext(
                 name='smooth_sampler_ext',
-                module='pcdet.ops.smooth_sampler',
+                module='uniscenev2_lidar.ops.smooth_sampler',
                 sources=[
                     'src/smooth_sampler.cpp', 
                     'src/smooth_sampler_cuda.cu'
@@ -66,7 +65,7 @@ if __name__ == '__main__':
             ),
             make_cuda_ext(
                 name='roiaware_pool3d_cuda',
-                module='pcdet.ops.roiaware_pool3d',
+                module='uniscenev2_lidar.ops.roiaware_pool3d',
                 sources=[
                     'src/roiaware_pool3d.cpp',
                     'src/roiaware_pool3d_kernel.cu',

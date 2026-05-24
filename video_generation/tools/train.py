@@ -23,17 +23,17 @@ from colossalai.nn.optimizer import HybridAdam
 from colossalai.utils import get_current_device, set_seed
 from tqdm import tqdm
 from torch.nn import functional as F
-from uniscenev2.acceleration.checkpoint import set_grad_checkpoint
-from uniscenev2.acceleration.parallel_states import get_data_parallel_group, get_sequence_parallel_group
-from uniscenev2.datasets.dataloader import prepare_dataloader
+from uniscenev2_video.acceleration.checkpoint import set_grad_checkpoint
+from uniscenev2_video.acceleration.parallel_states import get_data_parallel_group, get_sequence_parallel_group
+from uniscenev2_video.datasets.dataloader import prepare_dataloader
 # from torchvision.io import write_video
 import logging
 from mmcv.parallel import DataContainer
-from uniscenev2.registry import DATASETS, MODELS, SCHEDULERS, build_module
-from uniscenev2.utils.ckpt_utils import load, model_gathering, model_sharding, record_model_param_shape, save, prepare_ckpt, RandomStateManager
-from uniscenev2.utils.config_utils import define_experiment_workspace, parse_configs, save_training_config
-from uniscenev2.utils.lr_scheduler import LinearWarmupLR, MultiStepWithLinearWarmupLR
-from uniscenev2.utils.misc import (
+from uniscenev2_video.registry import DATASETS, MODELS, SCHEDULERS, build_module
+from uniscenev2_video.utils.ckpt_utils import load, model_gathering, model_sharding, record_model_param_shape, save, prepare_ckpt, RandomStateManager
+from uniscenev2_video.utils.config_utils import define_experiment_workspace, parse_configs, save_training_config
+from uniscenev2_video.utils.lr_scheduler import LinearWarmupLR, MultiStepWithLinearWarmupLR
+from uniscenev2_video.utils.misc import (
     Timer,
     all_reduce_mean,
     create_logger,
@@ -49,11 +49,11 @@ from uniscenev2.utils.misc import (
 )
 import colossalai
 import math
-from uniscenev2.utils.train_utils import MaskGenerator, create_colossalai_plugin, update_ema, default, sp_vae, run_validation
+from uniscenev2_video.utils.train_utils import MaskGenerator, create_colossalai_plugin, update_ema, default, sp_vae, run_validation
 import imageio
-# from uniscenev2.acceleration.parallel_states import initialize_sequence_parallel_state, \
+# from uniscenev2_video.acceleration.parallel_states import initialize_sequence_parallel_state, \
 #     destroy_sequence_parallel_group, get_sequence_parallel_state, set_sequence_parallel_state
-# from uniscenev2.acceleration.communications_plan import prepare_parallel_data, broadcast
+# from uniscenev2_video.acceleration.communications_plan import prepare_parallel_data, broadcast
 
 
 

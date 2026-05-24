@@ -9,7 +9,7 @@ set -euo pipefail
 
 SENSOR_LINK_DIR=${SENSOR_LINK_DIR:-dataset1/nuplan/sensor_blobs_train}
 OCC_RENDER_ROOT=${OCC_RENDER_ROOT:-}
-CONFIG=${CONFIG:-config/stage_3_video_pretrain_dit3d_nuplan_control_all_10hz_single.py}
+CONFIG=${CONFIG:-config/train.py}
 GPU_NUM=${GPU_NUM:-8}
 PORT=${PORT:-27518}
 

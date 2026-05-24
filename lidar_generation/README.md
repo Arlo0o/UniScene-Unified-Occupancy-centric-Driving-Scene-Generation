@@ -1,6 +1,6 @@
 # UniScenev2 LiDAR Generation
 
-This folder contains the LiDAR generation branch of UniScenev2. The code is organized as a standalone OpenPCDet-style project under `lidar_generation/`; generated logs, compiled CUDA artifacts, and pretrained weights are not checked in.
+This folder contains the LiDAR generation branch of UniScenev2. The code is organized as a compact standalone `uniscenev2_lidar` package; generated logs, compiled CUDA artifacts, and pretrained weights are not checked in.
 
 ## Framework
 
@@ -12,10 +12,10 @@ The LiDAR branch transfers semantic occupancy grids into sensor-specific point c
 
 ```text
 lidar_generation/
-├── pcdet/        # OpenPCDet-based model, dataset, CUDA ops, and utilities
-├── tools/        # train / evaluation / visualization entry points
+├── uniscenev2_lidar/  # UniScenev2 LiDAR model, dataset, CUDA ops, and utilities
+├── tools/             # minimal train / evaluation entry points
 ├── nuplan_sample72_r400_intenw10_pluckeremb_histemb_smlosscos_lidarcond_flim_allloc_fixrange.yaml
-├── run.sh        # default UniScenev2 LiDAR inference entry
+├── run.sh             # default UniScenev2 LiDAR inference entry
 ├── requirements.txt
 └── setup.py
 ```
@@ -33,11 +33,9 @@ pip install -e . -v
 Install the DDA CUDA extension used by the NuPlan occupancy-to-LiDAR dataset code.
 
 ```bash
-cd pcdet/datasets/nuscenes_occ/utils/dda
+cd uniscenev2_lidar/datasets/nuscenes_occ/utils/dda
 pip install . -v
 ```
-
-For OpenPCDet-specific environment issues, refer to the official [OpenPCDet](https://github.com/open-mmlab/OpenPCDet) installation guide.
 
 ## Pretrained Model
 
@@ -97,7 +95,7 @@ python tools/test.py \
   --save_to_file
 ```
 
-Override data paths without editing the YAML by appending OpenPCDet config overrides after `--set`:
+Override data paths without editing the YAML by appending UniScenev2 LiDAR config overrides after `--set`:
 
 ```bash
 python tools/test.py \
@@ -123,4 +121,4 @@ torchrun --nproc_per_node 8 tools/train.py \
 
 ## Acknowledgements
 
-This implementation builds on excellent open-source projects including [OpenPCDet](https://github.com/open-mmlab/OpenPCDet), NeuS, and NeuRAD.
+This implementation builds on excellent open-source projects in sparse 3D perception, neural surface rendering, and LiDAR simulation.

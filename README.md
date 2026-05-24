@@ -19,9 +19,16 @@ This work has been accepted by **IEEE TPAMI 2026**. This repository releases the
 
 We also release [**Nuplan-Occ**](https://huggingface.co/datasets/Arlolo0/Nuplan-Occupancy/tree/main), the largest semantic occupancy dataset to date, built upon the [NuPlan](https://www.nuscenes.org/nuplan) benchmark.
 
+<div align=center><img width="960" src="./assets/overall.png"/></div>
+
 <div align=center><img width="960"  src="./assets/teaser.png"/></div>
 
 Overview of Nuplan-Occ dataset and the UniScenev2 pipeline. We introduce the largest semantic occupancy dataset to date, featuring dense 3D semantic annotations that contain ~19× more annotated scenes and ~18× more frames than Nuscenes-Occupancy. Facilitated with Nuplan-Occ, UniScenev2 scales up both model architecture and training data to enable high-quality occupancy spatial expansion and temporal forecasting, as well as occupancy-based sparse point map condition for video generation, and sensor-specific LiDAR generation.
+
+<div align=center>
+  <img width="46%" src="./assets/demo_nuplan1.gif"/>
+  <img width="46%" src="./assets/demo_lx1.gif"/>
+</div>
 
 ---
 
@@ -36,7 +43,7 @@ The `v2` branch now provides the full code, data links, and pretrained checkpoin
 | SOP baseline | [`SOP/monoscene`](./SOP/monoscene) | MonoScene-based semantic occupancy prediction baseline on Nuplan-Occ |
 | Occupancy generation | [`occupancy_generation`](./occupancy_generation) | 3D VAE, occupancy DiT, forecasting, spatial expansion, preprocessing, and visualization |
 | Video generation | [`video_generation`](./video_generation) | Multi-view driving video generation from occupancy-aware conditions |
-| LiDAR generation | [`lidar_generation`](./lidar_generation) | Occupancy-conditioned LiDAR point cloud generation with OpenPCDet-style code |
+| LiDAR generation | [`lidar_generation`](./lidar_generation) | Occupancy-conditioned LiDAR point cloud generation with UniScenev2 LiDAR code |
 | Architecture figures | [`assets`](./assets) | Teaser, data pipeline, and model architecture figures |
 
 ### Checkpoints
@@ -226,7 +233,7 @@ Note: If you want to render the full set or another split, remember to change th
 
 ## 🎬 Video Generation
 
-The UniScenev2 video generation code is integrated under [`video_generation`](./video_generation). The original `pwm` package has been renamed to `uniscenev2`, and pretrained video weights should be downloaded from:
+The UniScenev2 video generation code is integrated under [`video_generation`](./video_generation), with a compact `uniscenev2_video` package and minimal NuPlan train/inference configs. Pretrained video weights should be downloaded from:
 [NuPlan-Occupancy/checkpoint/video_generation](https://huggingface.co/datasets/Arlolo0/Nuplan-Occupancy/tree/main/checkpoint/video_generation).
 
 The released branch includes model code, NuPlan configs, condition-map rendering scripts, and the inference entry point. Please prepare the external VAE and T5 assets under `video_generation/ckpts/` following the official Hugging Face paths described in [`video_generation/README.md`](./video_generation/README.md), then run:
@@ -242,7 +249,7 @@ For rendering semantic/depth condition maps and more training/inference details,
 
 ## 🧊 Occupancy Generation
 
-The UniScenev2 occupancy generation code is integrated under [`occupancy_generation`](./occupancy_generation). The original experimental `occ_gen_v2` layout has been flattened into a standalone module with configs, datasets, DiT/VAE models, preprocessing utilities, and visualization tools.
+The UniScenev2 occupancy generation code is integrated under [`occupancy_generation`](./occupancy_generation). The release keeps a standalone NuPlan module with compact configs, datasets, DiT/VAE models, preprocessing utilities, and a basic visualization helper.
 
 Download the released occupancy checkpoints from:
 [NuPlan-Occupancy/checkpoint/occ_generation](https://huggingface.co/datasets/Arlolo0/Nuplan-Occupancy/tree/main/checkpoint/occ_generation).
@@ -262,7 +269,7 @@ The expected checkpoint layout is `occupancy_generation/checkpoint/occ_generatio
 
 ## 📡 LiDAR Generation
 
-The UniScenev2 LiDAR generation code is integrated under [`lidar_generation`](./lidar_generation). It keeps the OpenPCDet-style `pcdet/` package and NuPlan occupancy-to-LiDAR configs, while excluding pretrained weights and compiled CUDA outputs.
+The UniScenev2 LiDAR generation code is integrated under [`lidar_generation`](./lidar_generation). It keeps a compact `uniscenev2_lidar/` package and the default NuPlan occupancy-to-LiDAR config, while excluding pretrained weights and compiled CUDA outputs.
 
 Download the released LiDAR checkpoint from:
 [NuPlan-Occupancy/checkpoint/lidar_generation](https://huggingface.co/datasets/Arlolo0/Nuplan-Occupancy/tree/main/checkpoint/lidar_generation).
@@ -274,7 +281,7 @@ huggingface-cli download Arlolo0/Nuplan-Occupancy \
   --include "checkpoint/lidar_generation/*" \
   --local-dir .
 pip install -e . -v
-cd pcdet/datasets/nuscenes_occ/utils/dda
+cd uniscenev2_lidar/datasets/nuscenes_occ/utils/dda
 pip install . -v
 cd ../../../../..
 bash run.sh

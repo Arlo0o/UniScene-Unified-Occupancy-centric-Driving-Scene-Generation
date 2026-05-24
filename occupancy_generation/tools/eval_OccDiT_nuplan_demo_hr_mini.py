@@ -49,7 +49,7 @@ from dataset import get_nuScenes_label_name
 from utils.metric_util import MeanIoU, multi_step_MeanIou,multi_step_fid_mmd,multi_step_TemporalConsistency
 
 
-from visualize.vis_Dit_time import draw_return,figure_to_array
+from visualize.visualize_basic import draw_return,figure_to_array
 # from sample import vis_matrix
 import imageio
 import matplotlib.pyplot as plt
@@ -585,7 +585,7 @@ if __name__ == "__main__":
     parser.add_argument("--ae_ckpt", type=str, default="ckpts/AE_eval/epoch_196.pth")
     parser.add_argument("--lambda_noise_prior", type=float, default=0.05)
     parser.add_argument("--save_occ", action='store_true', default=False)
-    # parser.add_argument('--vae-config', default='./config/train_vqvae_4.py')
+    # parser.add_argument('--vae-config', default='./config/train_3dvae_nuplan_400_full.py')
     parser.add_argument("--num-sampling-steps", type=int, default=200) #1000
     parser.add_argument("--result_dir", type=str, default="")
     parser.add_argument("--imageset", type=str, default="")

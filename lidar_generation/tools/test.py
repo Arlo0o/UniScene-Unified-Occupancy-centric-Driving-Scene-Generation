@@ -14,32 +14,14 @@ from torch.utils.data import Subset
 from tensorboardX import SummaryWriter
 
 from eval_utils import eval_utils_occ2lidar as eval_utils
-from pcdet.config import cfg, cfg_from_list, cfg_from_yaml_file, log_config_to_file
-from pcdet.datasets import build_dataloader
-from pcdet.models import build_network
-from pcdet.utils import common_utils
-
-# CFG = 'exps/occ2lidar_sparseunet_renderv2_s_priorsampler_p54_r400_intenw10_raydropw02/occ2lidar_sparseunet_renderv2_s_priorsampler_p54_r400_intenw10_raydropw02_prerays.yaml'
-# CFG = 'exps/occ2lidar_sparseunet_renderv2_s_nopriorsampler_p36_r200_intenw10_raydropw02/occ2lidar_sparseunet_renderv2_s_nopriorsampler_p36_r200_intenw10_raydropw02_prerays.yaml'
-# CKPT = 'exps/occ2lidar_sparseunet_renderv2_s_nopriorsampler_p36_r200_intenw10_raydropw02/ckpt/checkpoint_epoch_20.pth'
-
-# CFG = 'tools/cfgs/nuscenes_occ_models/nuplan_sample72_r200_intenw10.yaml'
-# CFG = 'exps/nuplan_mini_inten_alllidar_fix/nuplan_sample72_r200_intenw10_fixorigin.yaml'
-# CKPT = 'exps/occ2lidar_sparseunet_renderv2_s_priorsampler_p54_r200_intenw10_raydropw02/ckpt/checkpoint_epoch_20.pth'
-
-#CFG = 'exps/occ2lidar_sparseunet_renderv2_s_priorsampler_p54_r200_intenw10_raydropw02/occ2lidar_sparseunet_renderv2_s_priorsampler_p54_r200_intenw10_raydropw02_prerays_openscene.yaml'
-#CFG = 'exps/occ2lidar_sparseunet_renderv2_s_priorsampler_p54_r200_intenw10_raydropw02/occ2lidar_sparseunet_renderv2_s_priorsampler_p54_r200_intenw10_raydropw02_prerays_waymo.yaml'
-#CKPT = 'exps/nuplan_mini_inten_alllidar_fix/ckpt/latest_model.pth'
+from uniscenev2_lidar.config import cfg, cfg_from_list, cfg_from_yaml_file, log_config_to_file
+from uniscenev2_lidar.datasets import build_dataloader
+from uniscenev2_lidar.models import build_network
+from uniscenev2_lidar.utils import common_utils
 
 CFG = 'nuplan_sample72_r400_intenw10_pluckeremb_histemb_smlosscos_lidarcond_flim_allloc_fixrange.yaml'
 CKPT = 'checkpoint/lidar_generation/checkpoint.pth'
 NUM_WORKERS = 4
-
-# CFG = 'exps/nuplan_sample72_r200_intenw10_lidarcond/nuplan_sample72_r200_intenw10_lidarcond.yaml'
-# CKPT = 'exps/nuplan_sample72_r200_intenw10_lidarcond/ckpt/checkpoint_epoch_20.pth'
-
-# CFG = 'exps/nuplan_sample72_r200_intenw10_top_temporal/nuplan_sample72_r200_intenw10_top_temporal_eval.yaml'
-# CKPT = 'exps/nuplan_sample72_r200_intenw10_top_temporal/ckpt/checkpoint_epoch_20.pth'
 
 WORK_DIR = 'exps/temp'
 def parse_config():

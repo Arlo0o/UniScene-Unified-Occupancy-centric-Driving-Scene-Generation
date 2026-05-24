@@ -5,7 +5,7 @@ set -euo pipefail
 # Example:
 #   GPU_NUM=4 CKPT=checkpoint/video_generation bash run.sh
 
-CONFIG=${CONFIG:-config/stage_3_video_pretrain_dit3d_nuplan_control_all_10hz_single_sample.py}
+CONFIG=${CONFIG:-config/inference.py}
 CKPT=${CKPT:-checkpoint/video_generation}
 OUTPUT=${OUTPUT:-outputs/video_generation}
 GPU_NUM=${GPU_NUM:-1}

@@ -1,6 +1,6 @@
 # UniScenev2 Occupancy Generation
 
-This folder contains the occupancy generation branch of UniScenev2. The code has been flattened from the original experimental `occ_gen_v2` layout into `occupancy_generation/`, with generated outputs, sample data, and pretrained weights excluded from the repository.
+This folder contains the occupancy generation branch of UniScenev2. The release keeps the NuPlan-focused generation code, minimal configs, one basic visualization helper, and excludes generated outputs, sample data, and pretrained weights from the repository.
 
 ## Framework
 
@@ -12,15 +12,15 @@ The occupancy branch models 4D semantic occupancy as the shared scene representa
 
 ```text
 occupancy_generation/
-├── config/          # VAE / DiT / dataset configs
+├── config/          # minimal VAE / DiT / dataset configs
 ├── data_preprocess/ # occupancy quantization and BEV mapping helpers
 ├── dataset/         # NuPlan occupancy datasets and wrappers
 ├── diffusion/       # DiT diffusion models and sampling utilities
 ├── loss/            # VAE and occupancy losses
 ├── model_vae/       # 3D VAE and transformer modules
-├── tools/           # train / evaluation entry points
+├── tools/           # minimal train / evaluation entry points
 ├── utils/           # metrics, loading, visualization helpers
-├── visualize/       # occupancy visualization scripts
+├── visualize/       # basic occupancy visualization helper
 ├── run.sh           # default high-resolution occupancy inference entry
 └── requirements.txt
 ```
@@ -98,6 +98,14 @@ python3 occ_process_parallels.py \
 ```
 
 ## Inference
+
+The release keeps only the basic NuPlan configs:
+
+- `config/train_3dvae_nuplan_400_full.py`
+- `config/train_3dvae_nuplan_400_mini.py`
+- `config/train_3dvae_nuplan_200_pro_occ_bev.py`
+- `config/save_step2_nuplan.py`
+- `config/label_mapping/nuplan-occ.yaml`
 
 Run the default high-resolution occupancy generation demo.
 

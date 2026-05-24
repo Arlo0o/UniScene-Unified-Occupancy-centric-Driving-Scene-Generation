@@ -150,7 +150,7 @@ def main(args):
 if __name__ == '__main__':
     # Eval settings
     parser = argparse.ArgumentParser(description='')
-    parser.add_argument('--vae-config', default='config/save_step2_me.py')
+    parser.add_argument('--vae-config', default='config/save_step2_nuplan.py')
     parser.add_argument('--work-dir', type=str, default='./ckpt/VAE/')
     parser.add_argument('--resume-from', type=str, default='')
     parser.add_argument('--dir-name', type=str, default='vis')
